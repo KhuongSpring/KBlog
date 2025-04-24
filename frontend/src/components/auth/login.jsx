@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [age, setAge] = useState('');
+    const [gender, setGender] = useState('');
 
     useEffect(() => {
         const signUpButton = document.getElementById('signUp');
@@ -23,7 +26,7 @@ function Login() {
         return () => {
             signUpButton.removeEventListener('click', () => {});
             signInButton.removeEventListener('click', () => {});
-        }
+        };
     }, []);
 
     const navigate = useNavigate();
@@ -42,15 +45,45 @@ function Login() {
                 throw new Error(err);
             }
 
-            // API
+            // Parse the JSON response once
             const data = await response.json();
             console.log('Login success:', data);
 
-            localStorage.setItem("token", data.token);
-            navigate('/home');
-
+            // Save the token to localStorage
+            if (data.result.token){
+                localStorage.setItem("token", data.result.token);
+                navigate('/home');
+            } else {
+                console.log("Token is missing in the response!")
+            }
         } catch (error) {
             console.error('Login error:', error.message);
+        }
+    };
+
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8080/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, email, age, gender }),
+            });
+
+            if (!response.ok) {
+                const err = await response.text();
+                throw new Error(err);
+            }
+
+            // Parse the JSON response once
+            const data = await response.json();
+            console.log('Register success:', data);
+
+            // Save the token to localStorage
+            localStorage.setItem("token", data.token);
+
+        } catch (error) {
+            console.error('SignUp error:', error.message);
         }
     };
 
@@ -59,7 +92,7 @@ function Login() {
             <h2>Welcome to KBlog</h2>
             <div className="container" id="container">
                 <div className="form-container sign-up-container">
-                    <form action="#">
+                    <form onSubmit={handleSignUp}>
                         <h1>Create Account</h1>
                         <div className="social-container">
                             <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
@@ -67,9 +100,47 @@ function Login() {
                             <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)} />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)} />
+                        <input
+                            type="number"
+                            placeholder="Age"
+                            value={age}
+                            onChange={(e) => setAge(e.target.value)} />
+                        <div className="gender">
+                            <label>Gender:</label><br />
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Male"
+                                id="male"
+                                checked={gender === "Male"}
+                                onChange={(e) => setGender(e.target.value)}
+                            />
+                            <label>Male</label>
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Female"
+                                id="female"
+                                checked={gender === "Female"}
+                                onChange={(e) => setGender(e.target.value)}
+                            />
+                            <label>Female</label>
+                        </div>
                         <button>Sign Up</button>
                     </form>
                 </div>
