@@ -1,7 +1,6 @@
 package com.example.khuong18.configs;
 
 import com.example.khuong18.security.JwtAuthenticationFilter;
-import com.example.khuong18.security.UserDetailsServiceImpl;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +18,19 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SecurityConfig {
-    final String[] PUBLIC_END_POINT = {"/auth/**"};
-    final String[] USER_END_POINT = {"/user"};
-    final String[] ADMIN_END_POINT = {"/user/**"};
+    String[] PUBLIC_END_POINT = {
+            "/auth/**"
+    };
+
+    String[] USER_END_POINT = {
+            "/user"
+    };
+
+    String[] ADMIN_END_POINT = {
+            "/user/**"
+    };
 
     JwtAuthenticationFilter jwtAuthenticationFilter;
 

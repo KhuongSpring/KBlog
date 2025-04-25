@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
@@ -29,6 +30,12 @@ function Home() {
         }
     };
 
+    const navigate = useNavigate();
+
+    const handelMoveToProfile = async () => {
+        navigate('/profile');
+    }
+
     useEffect(() => {
         handleSignIn();  // Gọi API khi component mount
     }, []);  // Chạy chỉ một lần khi component load
@@ -36,6 +43,7 @@ function Home() {
     return (
         <div>
             <h1>Welcome to KBlog Dashboard 🎉</h1>
+            <button onClick={handelMoveToProfile}>Move to profile</button>
         </div>
     );
 }
