@@ -38,7 +38,7 @@ function Register() {
     };
 
     return (
-        <div className={styles.bodyy}>
+        <div className={styles.register_body}>
             <form onSubmit={handleSignUp}>
                 <div className={styles.content}>
                     <img src="/register/logo.png" alt="" className={styles.logo}/>

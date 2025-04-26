@@ -39,45 +39,43 @@ function Login() {
     };
 
     return (
-        <div>
-            <div className={styles.bodyy}>
-                <form onSubmit={handleSignIn}>
-                    <div className={styles.content}>
-                        <img src="/login/logo_ins.png" alt="" className={styles.logo}/>
-                        <div>
-                            <input type="text" placeholder="Phone numbber, username, or email"
-                                   className={styles.username}
-                                   value={username}
-                                   onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <input type="password" placeholder="Password" className={styles.password}
-                                   value={password}
-                                   onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <button type="submit" className={styles.btn_login}>Log in</button>
-                        </div>
-                        <p>---------------------- OR ----------------------</p>
-                        <div className={styles.outh2F}>
-                            <img src="/login/fb.png" alt=""/>
-                            <div>
-                                <a href="#">Log in with Facebook</a>
-                            </div>
-                        </div>
-                        <p className={styles.forgot_password}><a href="#">Forgot password?</a></p>
+        <div className={styles.login_body}>
+            <form onSubmit={handleSignIn}>
+                <div className={styles.content}>
+                    <img src="/login/logo_ins.png" alt="" className={styles.logo}/>
+                    <div>
+                        <input type="text" placeholder="Phone numbber, username, or email"
+                               className={styles.username}
+                               value={username}
+                               onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
+                    <div>
+                        <input type="password" placeholder="Password" className={styles.password}
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <button type="submit" className={styles.btn_login}>Log in</button>
+                    </div>
+                    <p className={styles.or}>---------------------- OR ----------------------</p>
+                    <div className={styles.outh2F}>
+                        <img src="/login/fb.png" alt=""/>
+                        <div>
+                            <a href="#">Log in with Facebook</a>
+                        </div>
+                    </div>
+                    <p className={styles.forgot_password}><a href="#">Forgot password?</a></p>
+                </div>
 
-                    <div className={styles.signup}>
-                        <p>Don't have an account? </p>
-                        <div>
-                            <a href="/register">Sign up</a>
-                        </div>
+                <div className={styles.signup}>
+                    <p>Don't have an account? </p>
+                    <div>
+                        <a href="/register">Sign up</a>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     );
 }
