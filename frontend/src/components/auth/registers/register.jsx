@@ -6,8 +6,7 @@ function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [age, setAge] = useState('');
-    const [gender, setGender] = useState('');
+    const [fullName, setFullName] = useState('');
 
     const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ function Register() {
             const response = await fetch('http://localhost:8080/auth/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({username, password, email, age, gender}),
+                body: JSON.stringify({username, password, fullName, email}),
             });
 
             if (!response.ok) {
@@ -53,18 +52,38 @@ function Register() {
                             </div>
                         </button>
                     </div>
-                    <p>---------------------- OR ----------------------</p>
+                    <p className={styles.or}>---------------------- OR ----------------------</p>
                     <div>
-                        <input type="text" placeholder="Username" className={styles.username}/>
+                        <input type="text"
+                               placeholder="Username"
+                               className={styles.username}
+                               value={username}
+                               onChange={(e)=> setUsername(e.target.value)}
+                        />
                     </div>
                     <div>
-                        <input type="password" placeholder="Password" className={styles.password}/>
+                        <input type="password"
+                               placeholder="Password"
+                               className={styles.password}
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
                     <div>
-                        <input type="text" placeholder="Fullname" className={styles.fullname}/>
+                        <input type="text"
+                               placeholder="Fullname"
+                               className={styles.fullname}
+                               value={fullName}
+                               onChange={(e) => setFullName(e.target.value)}
+                        />
                     </div>
                     <div>
-                        <input type="text" placeholder="Email" className={styles.email}/>
+                        <input type="text"
+                               placeholder="Email"
+                               className={styles.email}
+                               value={email}
+                               onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
                     <div className={styles.policy}>By signing up, you agree to our Terms , Privacy Policy and Cookies Policy
                     </div>

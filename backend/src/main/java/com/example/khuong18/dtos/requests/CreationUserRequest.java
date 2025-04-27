@@ -21,11 +21,7 @@ public class CreationUserRequest {
     @Size(min = 6, message = "Password must be at least 6 characters")
     String password;
 
-    @NotBlank(message = "Gender not valid")
-    String gender;
-
-    @NotNull(message = "Age not valid")
-    @Min(value = 10, message = "Age must be at least 10")
-    @Max(value = 80, message = "Age must not be smaller 80")
-    int age;
+    @NotBlank(message = "fullName not valid")
+    @Size(min = 10, message = "Full name must be at least 10 characters")
+    String fullName;
 }
