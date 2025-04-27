@@ -4,20 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="feat: done login and register system also UI done">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.module.css" afterDir="false" />
+    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="feat: done UI for profile and edit profile">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/UserUpdateProfileRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/configs/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/configs/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/CreationUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/CreationUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/responses/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/responses/UserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/entites/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/entites/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/logins/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/logins/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/logins/login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/logins/login.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/avt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/profile.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/setting.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -70,32 +79,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;Spring Boot.PersonalBlogApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/boyzs/Desktop/Java/PROJECT/frontend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
+    "Notification.DoNotAsk-Database detector": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.PersonalBlogApplication.executor": "Run",
+    "git-widget-placeholder": "feature/edit-profile-system",
+    "ignore.preview.features.used": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/boyzs/Desktop/Java/PROJECT/frontend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.khuong18.configs" />
@@ -139,6 +151,10 @@
       <workItem from="1745580994676" duration="88000" />
       <workItem from="1745602101300" duration="6110000" />
       <workItem from="1745651016161" duration="2683000" />
+      <workItem from="1745666307636" duration="6233000" />
+      <workItem from="1745677815291" duration="116000" />
+      <workItem from="1745685658064" duration="1387000" />
+      <workItem from="1745723813843" duration="221000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add project">
       <option name="closed" value="true" />
@@ -172,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745580861710</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: done UI for profile and edit profile">
+      <option name="closed" value="true" />
+      <created>1745666569914</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745666569914</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +206,7 @@
     <MESSAGE value="feat: add project" />
     <MESSAGE value="feat: config security, AuthenticationFiler, authentication, authorization" />
     <MESSAGE value="feat: done login and register system also UI done" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: done login and register system also UI done" />
+    <MESSAGE value="feat: done UI for profile and edit profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: done UI for profile and edit profile" />
   </component>
 </project>

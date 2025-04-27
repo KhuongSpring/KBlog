@@ -46,6 +46,12 @@
     margin-right: 10px;
 }
 
+.or {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+}
+
 .username {
     height: 35px;
     margin-top: 10px;

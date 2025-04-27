@@ -1,6 +1,7 @@
 package com.example.khuong18.services;
 
 import com.example.khuong18.dtos.requests.CreationUserRequest;
+import com.example.khuong18.dtos.requests.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.UserResponse;
 
 import java.util.List;
@@ -8,4 +9,7 @@ import java.util.List;
 public interface UserService {
     List<UserResponse> getUsers();
     boolean createUser(CreationUserRequest request);
+    UserResponse getUserById(Long id);
+    UserResponse getUserByUsername(String username);
+    UserResponse updateProfileUserByUserName(UserUpdateProfileRequest request);
 }

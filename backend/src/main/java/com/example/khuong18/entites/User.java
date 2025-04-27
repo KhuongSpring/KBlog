@@ -26,4 +26,8 @@ public class User {
     String gender;
     @Enumerated(EnumType.STRING)
     Role role;
+    String fullName;
+    String bio;
+    String connectLink;
+
 }

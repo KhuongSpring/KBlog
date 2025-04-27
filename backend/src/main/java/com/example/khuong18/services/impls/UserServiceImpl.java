@@ -1,6 +1,7 @@
 package com.example.khuong18.services.impls;
 
 import com.example.khuong18.dtos.requests.CreationUserRequest;
+import com.example.khuong18.dtos.requests.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.UserResponse;
 import com.example.khuong18.entites.User;
 import com.example.khuong18.entites.enums.Role;
@@ -30,8 +31,8 @@ public class UserServiceImpl implements UserService {
     public List<UserResponse> getUsers() {
         List<User> users = userRepository.findAll();
         List<UserResponse> userResponses = new ArrayList<>();
-        for(User u : users){
-           userResponses.add(modelMapper.map(u, UserResponse.class)) ;
+        for (User u : users) {
+            userResponses.add(modelMapper.map(u, UserResponse.class));
         }
         return userResponses;
     }
@@ -49,5 +50,28 @@ public class UserServiceImpl implements UserService {
         user.setRole(Role.USER);
         userRepository.save(user);
         return true;
+    }
+
+    @Override
+    public UserResponse getUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new CustomException("Not found user", HttpStatus.BAD_REQUEST));
+        return modelMapper.map(user, UserResponse.class);
+    }
+
+    @Override
+    public UserResponse getUserByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        return modelMapper.map(user, UserResponse.class);
+    }
+
+    @Override
+    public UserResponse updateProfileUserByUserName(UserUpdateProfileRequest request) {
+        User user = userRepository.findByUsername(request.getUserName());
+        if (user == null) throw new CustomException("Not found user", HttpStatus.FORBIDDEN);
+        user.setBio(request.getBio());
+        user.setConnectLink(request.getConnectLink());
+        user.setGender(request.getGender());
+        userRepository.save(user);
+        return modelMapper.map(user, UserResponse.class);
     }
 }

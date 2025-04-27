@@ -25,7 +25,7 @@ public class SecurityConfig {
     };
 
     String[] USER_END_POINT = {
-            "/user"
+            "/user/**"
     };
 
     String[] ADMIN_END_POINT = {
