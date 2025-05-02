@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styles from './login.module.css'
 import {useNavigate} from 'react-router-dom';
 
-function Login() {
+function Login({onLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -29,7 +29,8 @@ function Login() {
             // Save the token to localStorage
             if (data.result.token) {
                 localStorage.setItem("token", data.result.token);
-                navigate('/home');
+                onLogin();
+                navigate('/');
             } else {
                 console.log("Token is missing in the response!")
             }

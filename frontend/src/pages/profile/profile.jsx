@@ -88,7 +88,7 @@ function Profile() {
                         </div>
                         <p className={styles.profile_name}>{fullName}</p>
                         <p className={styles.description}>{bio}</p>
-                        <p className={styles.link_connect}><a href="#">{connectLink}</a></p>
+                        <p className={styles.link_connect}><a href={connectLink} target="_blank" rel="noopener noreferrer">{connectLink}</a></p>
                     </div>
                 </div>
             </div>

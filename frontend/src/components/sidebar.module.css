@@ -1,0 +1,48 @@
+.logo{
+    margin-bottom: 30px;
+}
+
+.side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: black;
+    border-right: 1px solid #262626;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    bottom: 0;
+}
+
+.navlink{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.navlink a{
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+    border-radius: 7px;
+}
+
+.navlink span{
+    margin-left: 10px;
+}
+
+.navlink a:hover{
+    background-color: #1A1A1A;
+}
+
+.nav_item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav_icon{
+    font-size: 25px;
+}

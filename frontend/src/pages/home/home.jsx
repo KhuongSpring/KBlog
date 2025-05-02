@@ -6,7 +6,6 @@ function Home() {
     const handleSignIn = async () => {
         const token = localStorage.getItem("token");
         if (!token) {
-            console.error("Token not found!");
             return;
         }
 
@@ -37,12 +36,16 @@ function Home() {
     }
 
     useEffect(() => {
+        if (localStorage.getItem("token")) {
+            navigate('/')
+        } else navigate('/login');
         handleSignIn();  // Gọi API khi component mount
+
     }, []);  // Chạy chỉ một lần khi component load
 
     return (
         <div>
-            <h1>Welcome to KBlog Dashboard 🎉</h1>
+            <h1>Welcome to KBlog Dashboardđâsdasdasdasds 🎉</h1>
             <button onClick={handelMoveToProfile}>Move to profile</button>
         </div>
     );
