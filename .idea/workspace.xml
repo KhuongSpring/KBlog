@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="workspace.xml">
-      <change afterPath="$PROJECT_DIR$/frontend/src/App.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.module.css" afterDir="false" />
+    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="feat: done login, register, update profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/logins/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/logins/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/home/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/edit_profile/edit_profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/edit_profile/edit_profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/edit_profile/edit_profile.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +83,7 @@
     &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/boyzs/Desktop/Java/PROJECT/frontend&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/boyzs/Desktop/Java/HIT_SPRING_BOOT/baitapquanlynhansu&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -156,6 +147,8 @@
       <workItem from="1746003497867" duration="6524000" />
       <workItem from="1746016456762" duration="1598000" />
       <workItem from="1746082633218" duration="3904000" />
+      <workItem from="1746212533911" duration="676000" />
+      <workItem from="1746453203105" duration="5366000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add project">
       <option name="closed" value="true" />
@@ -197,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745666569914</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: done login, register, update profile">
+      <option name="closed" value="true" />
+      <created>1746212726426</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746212726426</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +209,7 @@
     <MESSAGE value="feat: config security, AuthenticationFiler, authentication, authorization" />
     <MESSAGE value="feat: done login and register system also UI done" />
     <MESSAGE value="feat: done UI for profile and edit profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: done UI for profile and edit profile" />
+    <MESSAGE value="feat: done login, register, update profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: done login, register, update profile" />
   </component>
 </project>

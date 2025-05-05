@@ -8,3 +8,13 @@
     height: 100vh;
 }
 
+.main_content{
+    padding-left: 250px;
+}
+
+@media (max-width: 1250px) {
+    .main_content{
+        padding-left: 83px;
+    }
+}
+

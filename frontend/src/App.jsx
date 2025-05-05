@@ -28,7 +28,7 @@ function App() {
             {isLoggedIn ? (
                 <div className={styles.flex}>
                     <Sidebar onLogout = {handleLogout} />
-                    <div className="main_content" style={{ marginLeft: '250px'}}>
+                    <div className={styles.main_content}>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/profile" element={<Profile/>}/>
