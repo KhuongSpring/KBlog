@@ -24,7 +24,10 @@
 }
 
 .avata img {
+    width: 150px;
     height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .name_profile_edit {

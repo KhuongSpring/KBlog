@@ -32,6 +32,9 @@
 .infor_left img {
     height: 80px;
     margin-left: 30px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .infor_left p {
@@ -62,6 +65,8 @@
 .infor_right button:hover {
     background-color: #0188e2;
 }
+
+
 
 .bio p {
     margin-top: 30px;

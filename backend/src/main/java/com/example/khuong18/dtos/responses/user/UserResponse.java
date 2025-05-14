@@ -1,4 +1,4 @@
-package com.example.khuong18.dtos.responses;
+package com.example.khuong18.dtos.responses.user;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,4 +17,5 @@ public class UserResponse {
     String fullName;
     String bio;
     String connectLink;
+    String avatar;
 }
