@@ -1,5 +1,6 @@
 package com.example.khuong18.services.impls;
 
+import com.example.khuong18.constrants.ErrorMessage;
 import com.example.khuong18.dtos.requests.LoginRequest;
 import com.example.khuong18.dtos.responses.AuthResponse;
 import com.example.khuong18.entites.User;
@@ -25,12 +26,13 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public AuthResponse authentication(LoginRequest request) {
         if (!userRepository.existsUserByUsername(request.getUsername()))
-            throw new CustomException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND);
+            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
 
         User user = userRepository.findByUsername(request.getUsername());
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         boolean auth =  passwordEncoder.matches(request.getPassword(), user.getPassword());
-        if (!auth) throw new CustomException("Đăng nhập thất bại", HttpStatus.BAD_REQUEST);
+
+        if (!auth) throw new CustomException(ErrorMessage.Auth.ERR_LOGIN_FAIL, HttpStatus.BAD_REQUEST);
 
         var token = jwtService.generateToken(request.getUsername());
         return AuthResponse.builder()

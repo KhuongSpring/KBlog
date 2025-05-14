@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.net.BindException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,12 +16,13 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalException {
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<?> handleCustomException(CustomException e) {
+    public ResponseEntity<Object> handleCustomException(CustomException e) {
         return ResponseEntity
                 .status(e.getStatus())
                 .body(Map.of(
                         "error", e.getMessage(),
-                        "status", e.getStatus()
+                        "status", e.getStatus().value(),
+                        "time", LocalDateTime.now()
                 ));
     }
 

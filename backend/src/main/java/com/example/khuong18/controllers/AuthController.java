@@ -1,6 +1,7 @@
 package com.example.khuong18.controllers;
 
 
+import com.example.khuong18.constrants.SuccessMessage;
 import com.example.khuong18.dtos.requests.user.CreationUserRequest;
 import com.example.khuong18.dtos.requests.LoginRequest;
 import com.example.khuong18.dtos.responses.ApiResponse;
@@ -11,6 +12,7 @@ import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,17 +33,19 @@ public class AuthController {
         AuthResponse authResponse = authService.authentication(request);
         return ResponseEntity.ok(ApiResponse.<AuthResponse>builder()
                         .result(authResponse)
-                        .message("Login success!")
-                        .code(200)
+                        .message(SuccessMessage.Auth.SUCCESS_LOG_IN)
+                        .code(HttpStatus.OK.value())
                 .build());
     }
 
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<String>> createUser(@Valid @RequestBody CreationUserRequest request) {
-        userService.createUser(request);
-        return ResponseEntity.ok(ApiResponse.<String>builder()
-                        .result("Register success!")
-                        .code(201)
-                .build());
+        if (userService.createUser(request)){
+            return ResponseEntity.ok(ApiResponse.<String>builder()
+                    .result(SuccessMessage.Auth.SUCCESS_SIGN_UP)
+                    .code(HttpStatus.CREATED.value())
+                    .build());
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

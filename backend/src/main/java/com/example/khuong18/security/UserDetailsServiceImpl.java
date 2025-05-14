@@ -1,6 +1,7 @@
 package com.example.khuong18.security;
 
 
+import com.example.khuong18.constrants.ErrorMessage;
 import com.example.khuong18.entites.User;
 import com.example.khuong18.repositories.UserRepository;
 import lombok.AccessLevel;
@@ -22,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository
                 .findUserDetailByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+                .orElseThrow(() -> new UsernameNotFoundException(ErrorMessage.User.ERR_USER_NOT_FOUND + username));
         return new CustomUserDetails(user);
     }
 

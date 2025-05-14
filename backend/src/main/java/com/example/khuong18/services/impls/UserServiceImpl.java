@@ -1,5 +1,6 @@
 package com.example.khuong18.services.impls;
 
+import com.example.khuong18.constrants.ErrorMessage;
 import com.example.khuong18.dtos.requests.user.CreationUserRequest;
 import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.user.UserResponse;
@@ -40,9 +41,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean createUser(CreationUserRequest request) {
         if (userRepository.existsUserByUsername(request.getUsername()))
-            throw new CustomException("Username existed", HttpStatus.CONFLICT);
+            throw new CustomException(ErrorMessage.User.ERR_USERNAME_EXISTED, HttpStatus.CONFLICT);
         if (userRepository.existsUserByEmail(request.getEmail()))
-            throw new CustomException("Email existed", HttpStatus.CONFLICT);
+            throw new CustomException(ErrorMessage.User.ERR_EMAIL_EXISTED, HttpStatus.CONFLICT);
+
         User user = modelMapper.map(request, User.class);
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
@@ -54,23 +56,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUserById(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new CustomException("Not found user", HttpStatus.BAD_REQUEST));
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
         return modelMapper.map(user, UserResponse.class);
     }
 
     @Override
     public UserResponse getUserByUsername(String username) {
+        if (!userRepository.existsUserByUsername(username))
+            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
+
         User user = userRepository.findByUsername(username);
         return modelMapper.map(user, UserResponse.class);
     }
 
     @Override
     public UserResponse updateProfileUserByUserName(UserUpdateProfileRequest request) {
+        if (!userRepository.existsUserByUsername(request.getUserName()))
+            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
+
         User user = userRepository.findByUsername(request.getUserName());
-        if (user == null) throw new CustomException("Not found user", HttpStatus.FORBIDDEN);
+
         user.setBio(request.getBio());
         user.setConnectLink(request.getConnectLink());
         user.setGender(request.getGender());
+
         userRepository.save(user);
         return modelMapper.map(user, UserResponse.class);
     }
@@ -78,7 +88,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateAvatar(String url, String userName) {
         if (!userRepository.existsUserByUsername(userName))
-            throw new CustomException("User not found", HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
+
         User user = userRepository.findByUsername(userName);
         user.setAvatar(url);
         userRepository.save(user);

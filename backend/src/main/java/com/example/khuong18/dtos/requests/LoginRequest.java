@@ -1,5 +1,6 @@
 package com.example.khuong18.dtos.requests;
 
+import com.example.khuong18.constrants.ErrorMessage;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,8 +11,8 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoginRequest {
-    @NotBlank(message = "Username or password wrong")
+    @NotBlank(message = ErrorMessage.Auth.ERR_LOGIN_FAIL)
     String username;
-    @NotBlank(message = "Username or password wrong")
+    @NotBlank(message = ErrorMessage.Auth.ERR_LOGIN_FAIL)
     String password;
 }

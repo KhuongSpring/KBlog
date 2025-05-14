@@ -52,12 +52,12 @@ function Edit_Profile() {
             }
             const userData = await response.json();
 
-            setUserName(userData.username || '');
-            setFullName(userData.fullName || '');
-            setBio(userData.bio || '');
-            setConnectLink(userData.connectLink || '');
-            setGender(userData.gender || '');
-            setUrl(userData.avatar || '');
+            setUserName(userData.result.username || '');
+            setFullName(userData.result.fullName || '');
+            setBio(userData.result.bio || '');
+            setConnectLink(userData.result.connectLink || '');
+            setGender(userData.result.gender || '');
+            setUrl(userData.result.avatar || '');
 
             return userData;
         } catch (error) {

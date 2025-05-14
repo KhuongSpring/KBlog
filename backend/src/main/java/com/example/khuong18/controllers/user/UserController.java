@@ -1,14 +1,18 @@
 package com.example.khuong18.controllers.user;
 
+import com.cloudinary.Api;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.example.khuong18.constrants.SuccessMessage;
 import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
+import com.example.khuong18.dtos.responses.ApiResponse;
 import com.example.khuong18.dtos.responses.user.UserResponse;
 import com.example.khuong18.services.UserService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +30,12 @@ public class UserController {
     Cloudinary cloudinary;
 
     @GetMapping
-    public ResponseEntity<List<UserResponse>> getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
+    public ResponseEntity<ApiResponse<List<UserResponse>>> getUsers() {
+        return ResponseEntity.ok(ApiResponse.<List<UserResponse>>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_GET_DATA)
+                .result(userService.getUsers())
+                .build());
     }
 
 //    @GetMapping("/{userId}")
@@ -36,21 +44,33 @@ public class UserController {
 //    }
 
     @GetMapping("/{userName}")
-    public ResponseEntity<UserResponse> getUserByUserName(@PathVariable(name = "userName") String username){
-        return ResponseEntity.ok(userService.getUserByUsername(username));
+    public ResponseEntity<ApiResponse<UserResponse>> getUserByUserName(@PathVariable(name = "userName") String username) {
+        return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_GET_DATA)
+                .result(userService.getUserByUsername(username))
+                .build());
     }
 
     @PutMapping()
-    public ResponseEntity<UserResponse> updateUserByUserName(@Valid @RequestBody UserUpdateProfileRequest request){
-        return ResponseEntity.ok(userService.updateProfileUserByUserName(request));
+    public ResponseEntity<ApiResponse<UserResponse>> updateUserByUserName(@Valid @RequestBody UserUpdateProfileRequest request) {
+        return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
+                .result(userService.updateProfileUserByUserName(request))
+                .build());
     }
 
     @PostMapping("/upload_avatar")
-    public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam(name = "userName") String userName) throws IOException {
+    public ResponseEntity<ApiResponse<String>> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam(name = "userName") String userName) throws IOException {
         Map<?, ?> result = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
         String imageUrl = (String) result.get("secure_url");
         userService.updateAvatar(imageUrl, userName);
-        return ResponseEntity.ok(imageUrl);
+        return ResponseEntity.ok(ApiResponse.<String>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
+                .result(imageUrl)
+                .build());
     }
 
 }
