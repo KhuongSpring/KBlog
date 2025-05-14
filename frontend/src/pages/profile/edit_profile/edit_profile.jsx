@@ -2,6 +2,7 @@ import {useNavigate} from 'react-router-dom';
 import styles from './edit_profile.module.css';
 import {useEffect, useState} from "react";
 import {jwtDecode} from "jwt-decode";
+import axios from "axios";
 
 function Edit_Profile() {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Edit_Profile() {
     const [bio, setBio] = useState('');
     const [connectLink, setConnectLink] = useState('');
     const [gender, setGender] = useState('');
+    const [url, setUrl] = useState("");
 
     const token = localStorage.getItem("token");
 
@@ -55,6 +57,7 @@ function Edit_Profile() {
             setBio(userData.bio || '');
             setConnectLink(userData.connectLink || '');
             setGender(userData.gender || '');
+            setUrl(userData.avatar || '');
 
             return userData;
         } catch (error) {
@@ -96,6 +99,33 @@ function Edit_Profile() {
 
     }
 
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+
+        if (!file || file.length === 0){
+            console.log("Loi");
+            return;
+        }
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("userName", userName);
+
+        try{
+            const res = await axios.post("http://localhost:8080/user/upload_avatar", formData, {
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "Content-Type": "multipart/form-data"
+                },
+            });
+
+            setUrl(res.data.url || res.data);
+        } catch (error){
+            console.log("Upload fail: ", error)
+        }
+
+    };
+
+
     const moveBack= async () =>{
         navigate('/profile');
     }
@@ -111,14 +141,29 @@ function Edit_Profile() {
                     <p className={styles.nav}>Edit profile</p>
                     <div className={styles.infor}>
                         <div className={styles.infor_left}>
-                            <img src="/profile/edit_profile/avt.png" alt=""/>
+                            <img src={url || "/profile/edit_profile/avt.png"} alt="avatar"/>
                             <div>
                                 <p className={styles.name}>{userName}</p>
                                 <p className={styles.fullname}>{fullName}</p>
                             </div>
                         </div>
                         <div className={styles.infor_right}>
-                            <button>Change photo</button>
+                            <label style={{ display: 'inline-block', position: 'relative', overflow: 'hidden' }}>
+                                <button type="button">Chọn ảnh</button>
+                                <input
+                                    type="file"
+                                    onChange={handleFileChange}
+                                    style={{
+                                        position: 'absolute',
+                                        left: 0,
+                                        top: 0,
+                                        opacity: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        cursor: 'pointer'
+                                    }}
+                                />
+                            </label>
                         </div>
                     </div>
                     <div className={styles.bio}>

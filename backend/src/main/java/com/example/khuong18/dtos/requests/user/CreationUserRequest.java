@@ -1,4 +1,4 @@
-package com.example.khuong18.dtos.requests;
+package com.example.khuong18.dtos.requests.user;
 
 import jakarta.validation.constraints.*;
 import lombok.*;

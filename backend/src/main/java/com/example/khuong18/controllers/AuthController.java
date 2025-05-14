@@ -1,7 +1,7 @@
 package com.example.khuong18.controllers;
 
 
-import com.example.khuong18.dtos.requests.CreationUserRequest;
+import com.example.khuong18.dtos.requests.user.CreationUserRequest;
 import com.example.khuong18.dtos.requests.LoginRequest;
 import com.example.khuong18.dtos.responses.ApiResponse;
 import com.example.khuong18.dtos.responses.AuthResponse;
@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

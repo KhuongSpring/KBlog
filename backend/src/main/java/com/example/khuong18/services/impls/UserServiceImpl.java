@@ -1,8 +1,8 @@
 package com.example.khuong18.services.impls;
 
-import com.example.khuong18.dtos.requests.CreationUserRequest;
-import com.example.khuong18.dtos.requests.UserUpdateProfileRequest;
-import com.example.khuong18.dtos.responses.UserResponse;
+import com.example.khuong18.dtos.requests.user.CreationUserRequest;
+import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
+import com.example.khuong18.dtos.responses.user.UserResponse;
 import com.example.khuong18.entites.User;
 import com.example.khuong18.entites.enums.Role;
 import com.example.khuong18.exceptions.CustomException;
@@ -74,4 +74,14 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return modelMapper.map(user, UserResponse.class);
     }
+
+    @Override
+    public void updateAvatar(String url, String userName) {
+        if (!userRepository.existsUserByUsername(userName))
+            throw new CustomException("User not found", HttpStatus.BAD_REQUEST);
+        User user = userRepository.findByUsername(userName);
+        user.setAvatar(url);
+        userRepository.save(user);
+    }
+
 }

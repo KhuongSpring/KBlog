@@ -11,6 +11,7 @@ function Profile() {
     const [connectLink, setConnectLink] = useState('');
     const [fullName, setFullName] = useState('');
     const [gender, setGender] = useState('');
+    const [url, setUrl] = useState("");
 
     const moveToEditProfile = async () => {
         navigate('/edit_profile')
@@ -59,6 +60,7 @@ function Profile() {
             setBio(userData.bio || '');
             setConnectLink(userData.connectLink || '');
             setGender(userData.gender || '');
+            setUrl(userData.avatar || '');
             return userData;
         } catch (error) {
             console.error('Error fetching user info:', error);
@@ -74,7 +76,7 @@ function Profile() {
         <div className={styles.profile_body}>
             <div className={styles.header}>
                 <div className={styles.header_content}>
-                    <div className={styles.avata}><img src="/profile/logo.png" alt=""/></div>
+                    <div className={styles.avata}><img src={url || "/profile/logo.png"} alt=""/></div>
                     <div className={styles.information}>
                         <div className={styles.name_profile_edit}>
                             <p> {userName} </p>

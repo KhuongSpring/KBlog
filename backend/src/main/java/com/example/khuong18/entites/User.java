@@ -29,5 +29,6 @@ public class User {
     String fullName;
     String bio;
     String connectLink;
+    String avatar;
 
 }
