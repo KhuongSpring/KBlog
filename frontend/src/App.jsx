@@ -32,6 +32,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/profile" element={<Profile/>}/>
+                            <Route path="/profile/:usernameFromAnother" element={<Profile />} />
                             <Route path="/edit_profile" element={<Edit_Profile/>}/>
                         </Routes>
                     </div>

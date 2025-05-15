@@ -1,0 +1,12 @@
+package com.example.khuong18.constrants;
+
+public class BaseUrl {
+    public static class User{
+        public static final String PREFIX = "/user";
+        public static final String GET_USERS = PREFIX;
+        public static final String GET_USER_BY_USERNAME = PREFIX + "/{userName}";
+        public static final String UPDATE_USER = PREFIX;
+        public static final String UPLOAD_AVATAR = PREFIX + "/upload_avatar";
+        public static final String SEARCH_USERS_BY_KEYWORD = PREFIX + "/search/{keyword}";
+    }
+}
