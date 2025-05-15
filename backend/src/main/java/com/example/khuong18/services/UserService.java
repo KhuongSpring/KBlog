@@ -13,4 +13,5 @@ public interface UserService {
     UserResponse getUserByUsername(String username);
     UserResponse updateProfileUserByUserName(UserUpdateProfileRequest request);
     void updateAvatar(String url, String userName);
+    List<UserResponse> getUsersByKeyword(String keyword);
 }

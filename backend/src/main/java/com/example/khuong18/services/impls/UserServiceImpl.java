@@ -95,4 +95,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public List<UserResponse> getUsersByKeyword(String keyword) {
+        List<User> users = userRepository.findByUsernameContainingIgnoreCase(keyword);
+
+        List<UserResponse> responses = new ArrayList<>();
+        for(User u : users){
+            responses.add(modelMapper.map(u, UserResponse.class));
+        }
+        return responses;
+    }
+
 }

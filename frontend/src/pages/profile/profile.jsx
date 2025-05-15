@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import styles from "./profile.module.css"
 import {jwtDecode} from 'jwt-decode';
 
@@ -12,6 +12,8 @@ function Profile() {
     const [fullName, setFullName] = useState('');
     const [gender, setGender] = useState('');
     const [url, setUrl] = useState("");
+    const [isYourProfile, setIsYourProfile] = useState(true);
+    const {usernameFromAnother} = useParams();
 
     const moveToEditProfile = async () => {
         navigate('/edit_profile')
@@ -25,21 +27,33 @@ function Profile() {
         }
 
         const decode = jwtDecode(token);
-        const username = decode.sub;
-        return username;
+        return decode.sub;
     }
 
     const fetchUserByUserName = async () => {
+        setUserName('');
+        setFullName('');
+        setBio('');
+        setConnectLink('');
+        setGender('');
+        setUrl('');
+        setIsYourProfile(true);
+
         const token = localStorage.getItem("token");
         if (!token) {
             console.error("Token not found!");
             return;
         }
 
-        const username = await getUserNameByToken();
+        let username = await getUserNameByToken();
         if (!username) {
             console.error("Username not found in token!");
             return null;
+        }
+
+        if (usernameFromAnother) {
+            username = usernameFromAnother;
+            setIsYourProfile(false);
         }
 
         try {
@@ -70,7 +84,7 @@ function Profile() {
 
     useEffect(() => {
         fetchUserByUserName();
-    }, []);  // Chạy chỉ một lần khi component load
+    }, [usernameFromAnother]);
 
     return (
         <div className={styles.profile_body}>
@@ -80,7 +94,9 @@ function Profile() {
                     <div className={styles.information}>
                         <div className={styles.name_profile_edit}>
                             <p> {userName} </p>
-                            <button className={styles.edit} onClick={moveToEditProfile}>Edit profile</button>
+                            {isYourProfile
+                                ? <button className={styles.edit} onClick={moveToEditProfile}>Edit profile</button>
+                                : <button className={styles.follow_btn} onClick={moveToEditProfile}>Follow</button>}
                             <img src="/profile/setting.png" alt=""/>
                         </div>
                         <div className={styles.follow}>
@@ -90,7 +106,8 @@ function Profile() {
                         </div>
                         <p className={styles.profile_name}>{fullName}</p>
                         <p className={styles.description}>{bio}</p>
-                        <p className={styles.link_connect}><a href={connectLink} target="_blank" rel="noopener noreferrer">{connectLink}</a></p>
+                        <p className={styles.link_connect}><a href={connectLink} target="_blank"
+                                                              rel="noopener noreferrer">{connectLink}</a></p>
                     </div>
                 </div>
             </div>
