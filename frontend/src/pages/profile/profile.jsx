@@ -11,21 +11,22 @@ function Profile() {
     const [connectLink, setConnectLink] = useState('');
     const [fullName, setFullName] = useState('');
     const [gender, setGender] = useState('');
+    const [follower, setFollower] = useState(0);
+    const [following, setFollowing] = useState(0);
+    const [post, setPost] = useState(0);
     const [url, setUrl] = useState("");
     const [isYourProfile, setIsYourProfile] = useState(true);
+    const [myUsername, setMyUsername] = useState('');
+    const [targetUsername, setTargetUsername] = useState('');
     const {usernameFromAnother} = useParams();
+    const token = localStorage.getItem("token");
+
 
     const moveToEditProfile = async () => {
         navigate('/edit_profile')
     }
 
     const getUserNameByToken = async () => {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            console.error("Token not found!");
-            return;
-        }
-
         const decode = jwtDecode(token);
         return decode.sub;
     }
@@ -37,9 +38,11 @@ function Profile() {
         setConnectLink('');
         setGender('');
         setUrl('');
+        setFollower(0);
+        setFollowing(0);
+        setPost(0);
         setIsYourProfile(true);
 
-        const token = localStorage.getItem("token");
         if (!token) {
             console.error("Token not found!");
             return;
@@ -75,7 +78,35 @@ function Profile() {
             setConnectLink(userData.result.connectLink || '');
             setGender(userData.result.gender || '');
             setUrl(userData.result.avatar || '');
+            setFollower(userData.result.follower || 0);
+            setFollowing(userData.result.following || 0);
+            setPost(userData.result.post || 0);
             return userData;
+        } catch (error) {
+            console.error('Error fetching user info:', error);
+            return null;
+        }
+    }
+
+    const handleFollow = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/user/follow`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify({
+                    myUsername: myUsername,
+                    targetUsername: targetUsername
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch user info');
+            }
+            const data = await response.json();
+            return data;
         } catch (error) {
             console.error('Error fetching user info:', error);
             return null;
@@ -96,13 +127,13 @@ function Profile() {
                             <p> {userName} </p>
                             {isYourProfile
                                 ? <button className={styles.edit} onClick={moveToEditProfile}>Edit profile</button>
-                                : <button className={styles.follow_btn} onClick={moveToEditProfile}>Follow</button>}
+                                : <button className={styles.follow_btn} onClick={handleFollow}>Follow</button>}
                             <img src="/profile/setting.png" alt=""/>
                         </div>
                         <div className={styles.follow}>
-                            <p className={styles.post}>posts</p>
-                            <p className={styles.followers}>followers</p>
-                            <p className={styles.following}>following</p>
+                            <p className={styles.post}>{post} posts</p>
+                            <p className={styles.followers}>{follower} followers</p>
+                            <p className={styles.following}>{following} following</p>
                         </div>
                         <p className={styles.profile_name}>{fullName}</p>
                         <p className={styles.description}>{bio}</p>

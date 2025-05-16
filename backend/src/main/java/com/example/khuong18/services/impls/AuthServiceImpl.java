@@ -3,7 +3,7 @@ package com.example.khuong18.services.impls;
 import com.example.khuong18.constrants.ErrorMessage;
 import com.example.khuong18.dtos.requests.LoginRequest;
 import com.example.khuong18.dtos.responses.AuthResponse;
-import com.example.khuong18.entites.User;
+import com.example.khuong18.entites.user.User;
 import com.example.khuong18.exceptions.CustomException;
 import com.example.khuong18.repositories.UserRepository;
 import com.example.khuong18.services.AuthService;

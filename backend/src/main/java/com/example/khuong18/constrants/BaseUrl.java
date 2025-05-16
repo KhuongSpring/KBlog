@@ -8,5 +8,6 @@ public class BaseUrl {
         public static final String UPDATE_USER = PREFIX;
         public static final String UPLOAD_AVATAR = PREFIX + "/upload_avatar";
         public static final String SEARCH_USERS_BY_KEYWORD = PREFIX + "/search/{keyword}";
+        public static final String FOLLOW_USER = PREFIX + "/follow";
     }
 }
