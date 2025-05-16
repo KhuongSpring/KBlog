@@ -71,11 +71,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse updateProfileUserByUserName(UserUpdateProfileRequest request) {
-        if (!userRepository.existsUserByUsername(request.getUserName()))
-            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
-
-        User user = userRepository.findByUsername(request.getUserName());
+    public UserResponse updateProfileUserById(UserUpdateProfileRequest request) {
+        User user = userRepository.findById(request.getId())
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
         user.setBio(request.getBio());
         user.setConnectLink(request.getConnectLink());
@@ -86,11 +84,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateAvatar(String url, String userName) {
-        if (!userRepository.existsUserByUsername(userName))
-            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
+    public void updateAvatar(String url, Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
-        User user = userRepository.findByUsername(userName);
         user.setAvatar(url);
         userRepository.save(user);
     }
@@ -107,12 +104,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateFollow(String myUsername, String targetUsername) {
-        User myUser = userRepository.findByUsername(myUsername);
-        User targetUser = userRepository.findByUsername(targetUsername);
-
-        if (myUser == null || targetUser == null)
-            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
+    public void updateFollow(Long myId, Long targetId) {
+        User myUser = userRepository.findById(myId)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
+        User targetUser = userRepository.findById(targetId)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
         myUser.getFollowings().add(targetUser);
 

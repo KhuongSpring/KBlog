@@ -1,6 +1,8 @@
 package com.example.khuong18.services.impls;
 
+import com.example.khuong18.dtos.responses.user.UserResponse;
 import com.example.khuong18.services.JwtService;
+import com.example.khuong18.services.UserService;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
@@ -9,10 +11,13 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -26,19 +31,26 @@ import java.util.function.Function;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class JwtServiceImpl implements JwtService {
 
+    UserService userService;
     @NonFinal
     @Value("${jwt.secret}")
     String secretKey;
     long EXPIRATION = 86400000;
 
+    public JwtServiceImpl(UserService userService) {
+        this.userService = userService;
+    }
+
     @Override
     public String generateToken(String username) {
+        UserResponse user = userService.getUserByUsername(username);
         try {
             JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                     .subject(username)
                     .issueTime(new Date())
                     .expirationTime(new Date(System.currentTimeMillis() + EXPIRATION))
                     .claim("authorities", List.of("ROLE_USER"))
+                    .claim("id", user.getId())
                     .build();
 
             SignedJWT signedJWT = new SignedJWT(

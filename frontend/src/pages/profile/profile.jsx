@@ -6,6 +6,8 @@ import {jwtDecode} from 'jwt-decode';
 
 function Profile() {
     const navigate = useNavigate();
+    const token = localStorage.getItem("token");
+
     const [userName, setUserName] = useState('');
     const [bio, setBio] = useState('');
     const [connectLink, setConnectLink] = useState('');
@@ -16,22 +18,20 @@ function Profile() {
     const [post, setPost] = useState(0);
     const [url, setUrl] = useState("");
     const [isYourProfile, setIsYourProfile] = useState(true);
-    const [myUsername, setMyUsername] = useState('');
-    const [targetUsername, setTargetUsername] = useState('');
-    const {usernameFromAnother} = useParams();
-    const token = localStorage.getItem("token");
-
+    const [myId, setMyId] = useState(0);
+    const [targetId, setTargetId] = useState(0);
+    const {idFromAnother} = useParams();
 
     const moveToEditProfile = async () => {
         navigate('/edit_profile')
     }
 
-    const getUserNameByToken = async () => {
-        const decode = jwtDecode(token);
-        return decode.sub;
+    const getIdByToken = async () => {
+        const decoded = jwtDecode(token);
+        return decoded.id;
     }
 
-    const fetchUserByUserName = async () => {
+    const fetchUserById = async () => {
         setUserName('');
         setFullName('');
         setBio('');
@@ -48,40 +48,45 @@ function Profile() {
             return;
         }
 
-        let username = await getUserNameByToken();
-        if (!username) {
-            console.error("Username not found in token!");
+        let idFromToken = await getIdByToken();
+
+        if (!idFromToken) {
+            console.error("Id not found in token!");
             return null;
         }
 
-        if (usernameFromAnother) {
-            username = usernameFromAnother;
+        if (idFromAnother) {
+            idFromToken = idFromAnother;
             setIsYourProfile(false);
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/user/${username}`, {
+            const response = await fetch(`http://localhost:8080/user/id/${idFromToken}`, {
                 method: 'GET',
                 headers: {
-                    "Authorization": "Bearer " + token
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
                 }
             });
 
             if (!response.ok) {
                 throw new Error('Failed to fetch user info');
             }
-            const userData = await response.json();
+            const { result } = await response.json();
 
-            setUserName(userData.result.username || '');
-            setFullName(userData.result.fullName || '');
-            setBio(userData.result.bio || '');
-            setConnectLink(userData.result.connectLink || '');
-            setGender(userData.result.gender || '');
-            setUrl(userData.result.avatar || '');
-            setFollower(userData.result.follower || 0);
-            setFollowing(userData.result.following || 0);
-            setPost(userData.result.post || 0);
-            return userData;
+            setUserName(result.username || '');
+            setFullName(result.fullName || '');
+            setBio(result.bio || '');
+            setConnectLink(result.connectLink || '');
+            setGender(result.gender || '');
+            setUrl(result.avatar || '');
+            setFollower(result.follower || 0);
+            setFollowing(result.following || 0);
+            setPost(result.post || 0);
+
+            setMyId(idFromToken);
+
+            return result;
         } catch (error) {
             console.error('Error fetching user info:', error);
             return null;
@@ -97,13 +102,13 @@ function Profile() {
                     "Authorization": "Bearer " + token
                 },
                 body: JSON.stringify({
-                    myUsername: myUsername,
-                    targetUsername: targetUsername
+                    myId: myId,
+                    targetId: targetId
                 })
             });
 
             if (!response.ok) {
-                throw new Error('Failed to fetch user info');
+                throw new Error('Failed to follow');
             }
             const data = await response.json();
             return data;
@@ -114,8 +119,14 @@ function Profile() {
     }
 
     useEffect(() => {
-        fetchUserByUserName();
-    }, [usernameFromAnother]);
+        if (idFromAnother) {
+            setTargetId(idFromAnother);
+            setIsYourProfile(false);
+        } else {
+            setIsYourProfile(true);
+        }
+        fetchUserById();
+    }, [idFromAnother]);
 
     return (
         <div className={styles.profile_body}>
@@ -131,9 +142,15 @@ function Profile() {
                             <img src="/profile/setting.png" alt=""/>
                         </div>
                         <div className={styles.follow}>
-                            <p className={styles.post}>{post} posts</p>
-                            <p className={styles.followers}>{follower} followers</p>
-                            <p className={styles.following}>{following} following</p>
+                            <p className={styles.post}>
+                                <strong style={{ fontSize: '1.1rem' }}>{post}</strong> posts
+                            </p>
+                            <p className={styles.followers}>
+                                <strong style={{ fontSize: '1.1rem' }}>{follower}</strong> followers
+                            </p>
+                            <p className={styles.following}>
+                                <strong style={{ fontSize: '1.1rem' }}>{following}</strong> following
+                            </p>
                         </div>
                         <p className={styles.profile_name}>{fullName}</p>
                         <p className={styles.description}>{bio}</p>
