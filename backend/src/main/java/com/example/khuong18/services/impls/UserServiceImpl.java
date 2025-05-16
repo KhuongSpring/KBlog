@@ -4,7 +4,7 @@ import com.example.khuong18.constrants.ErrorMessage;
 import com.example.khuong18.dtos.requests.user.CreationUserRequest;
 import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.user.UserResponse;
-import com.example.khuong18.entites.User;
+import com.example.khuong18.entites.user.User;
 import com.example.khuong18.entites.enums.Role;
 import com.example.khuong18.exceptions.CustomException;
 import com.example.khuong18.repositories.UserRepository;
@@ -104,6 +104,23 @@ public class UserServiceImpl implements UserService {
             responses.add(modelMapper.map(u, UserResponse.class));
         }
         return responses;
+    }
+
+    @Override
+    public void updateFollow(String myUsername, String targetUsername) {
+        User myUser = userRepository.findByUsername(myUsername);
+        User targetUser = userRepository.findByUsername(targetUsername);
+
+        if (myUser == null || targetUser == null)
+            throw new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST);
+
+        myUser.getFollowings().add(targetUser);
+
+        myUser.setFollowing(myUser.getFollowing()+1);
+        targetUser.setFollower(targetUser.getFollower()+1);
+
+        userRepository.save(myUser);
+        userRepository.save(targetUser);
     }
 
 }

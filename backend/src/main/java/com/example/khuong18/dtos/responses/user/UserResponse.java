@@ -18,4 +18,7 @@ public class UserResponse {
     String bio;
     String connectLink;
     String avatar;
+    int follower;
+    int following;
+    int post;
 }

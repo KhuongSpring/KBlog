@@ -2,7 +2,7 @@ package com.example.khuong18.security;
 
 
 import com.example.khuong18.constrants.ErrorMessage;
-import com.example.khuong18.entites.User;
+import com.example.khuong18.entites.user.User;
 import com.example.khuong18.repositories.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

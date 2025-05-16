@@ -1,12 +1,11 @@
 package com.example.khuong18.security;
 
-import com.example.khuong18.entites.User;
+import com.example.khuong18.entites.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class CustomUserDetails implements UserDetails {

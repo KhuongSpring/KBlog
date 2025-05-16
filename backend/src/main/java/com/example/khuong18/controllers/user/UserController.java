@@ -5,6 +5,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.khuong18.constrants.BaseUrl;
 import com.example.khuong18.constrants.SuccessMessage;
+import com.example.khuong18.dtos.requests.user.FollowUserRequest;
 import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.ApiResponse;
 import com.example.khuong18.dtos.responses.user.UserResponse;
@@ -79,6 +80,20 @@ public class UserController {
                 .code(HttpStatus.OK.value())
                 .message(SuccessMessage.User.SUCCESS_GET_DATA)
                 .result(userService.getUsersByKeyword(word))
+                .build());
+    }
+
+    @PostMapping(BaseUrl.User.FOLLOW_USER)
+    public ResponseEntity<ApiResponse<String>> followUser(@Valid @RequestBody FollowUserRequest request) {
+        String myUsername = request.getMyUsername();
+        String targetUsername = request.getTargetUsername();
+
+        userService.updateFollow(myUsername, targetUsername);
+
+        return ResponseEntity.ok(ApiResponse.<String>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
+                .result(myUsername + " followed " + targetUsername)
                 .build());
     }
 
