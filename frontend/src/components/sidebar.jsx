@@ -110,7 +110,7 @@ export default function Sidebar({onLogout}) {
                                     <div key={index}
                                          className={styles.search_result_item}
                                          onClick={() => {
-                                             navigate(`/profile/${user.username}`);
+                                             navigate(`/profile/${user.id}`);
                                              setIsExpanded(false);
                                          }}
                                          style={{cursor: 'pointer'}}

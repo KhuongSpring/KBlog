@@ -1,0 +1,114 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fb211101-3378-489b-b17a-0537c0ac67c9\" name=\"Changes\" comment=\"refactor: clean code by adding constraint message and api response\">\r\n      <change afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/BaseUrl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/repositories/UserRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/repositories/UserRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/App.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/App.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/components/sidebar.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/components/sidebar.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/components/sidebar.module.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/components/sidebar.module.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Enum\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;KhuongSpring&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/KhuongSpring/KBlog.git&quot;,\r\n    &quot;accountId&quot;: &quot;44b78263-1d03-441b-9ca0-15c94b088d7c&quot;\r\n  }\r\n}</component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2w2HLDHjH5wSqtYYTi6KbyYWLKr\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,\r\n    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,\r\n    &quot;Spring Boot.PersonalBlogApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;feature/search-profile-system&quot;,\r\n    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/boyzs/Desktop/Java/HIT_SPRING_BOOT/baitapquanlynhansu&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;sonarlint&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"com.example.khuong18.configs\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\boyzs\\Desktop\\Java\\PROJECT\\frontend\\src\\pages\" />\r\n      <recent name=\"C:\\Users\\boyzs\\Desktop\\Java\\PROJECT\\frontend\\src\\pages\\profile\" />\r\n      <recent name=\"C:\\Users\\boyzs\\Desktop\\Java\\PROJECT\\frontend\\src\\components\\auth\\logins\" />\r\n      <recent name=\"C:\\Users\\boyzs\\Desktop\\Java\\PROJECT\\frontend\\src\\components\\auth\\registers\" />\r\n      <recent name=\"C:\\Users\\boyzs\\Desktop\\Java\\PROJECT\\frontend\\public\\login\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fb211101-3378-489b-b17a-0537c0ac67c9\" name=\"Changes\" comment=\"\" />\r\n      <created>1745232690135</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1745232690135</updated>\r\n      <workItem from=\"1745232691227\" duration=\"13855000\" />\r\n      <workItem from=\"1745326166340\" duration=\"68000\" />\r\n      <workItem from=\"1745326256398\" duration=\"32000\" />\r\n      <workItem from=\"1745326297568\" duration=\"212000\" />\r\n      <workItem from=\"1745326528593\" duration=\"27000\" />\r\n      <workItem from=\"1745326635923\" duration=\"7970000\" />\r\n      <workItem from=\"1745415341103\" duration=\"7122000\" />\r\n      <workItem from=\"1745468621844\" duration=\"9133000\" />\r\n      <workItem from=\"1745509994648\" duration=\"5131000\" />\r\n      <workItem from=\"1745520873326\" duration=\"517000\" />\r\n      <workItem from=\"1745569745901\" duration=\"43000\" />\r\n      <workItem from=\"1745572534984\" duration=\"5112000\" />\r\n      <workItem from=\"1745580994676\" duration=\"88000\" />\r\n      <workItem from=\"1745602101300\" duration=\"6110000\" />\r\n      <workItem from=\"1745651016161\" duration=\"2683000\" />\r\n      <workItem from=\"1745666307636\" duration=\"6233000\" />\r\n      <workItem from=\"1745677815291\" duration=\"116000\" />\r\n      <workItem from=\"1745685658064\" duration=\"1387000\" />\r\n      <workItem from=\"1745723813843\" duration=\"221000\" />\r\n      <workItem from=\"1745838325280\" duration=\"30000\" />\r\n      <workItem from=\"1746003497867\" duration=\"6524000\" />\r\n      <workItem from=\"1746016456762\" duration=\"1598000\" />\r\n      <workItem from=\"1746082633218\" duration=\"3904000\" />\r\n      <workItem from=\"1746212533911\" duration=\"676000\" />\r\n      <workItem from=\"1746453203105\" duration=\"5507000\" />\r\n      <workItem from=\"1746864889260\" duration=\"71000\" />\r\n      <workItem from=\"1747235216516\" duration=\"3589000\" />\r\n      <workItem from=\"1747280945562\" duration=\"6759000\" />\r\n      <workItem from=\"1747292298266\" duration=\"9000\" />\r\n      <workItem from=\"1747293503493\" duration=\"5119000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"feat: add project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745415784930</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745415784930</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"feat: add project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745415805734</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745415805734</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"feat: config security, AuthenticationFiler, authentication, authorization\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745510286820</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745510286820</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"feat: done login and register system also UI done\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745580861710</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745580861710</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"feat: done UI for profile and edit profile\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1745666569914</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1745666569914</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"feat: done login, register, update profile\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746212726426</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746212726426</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"feat: done UI for search system\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746458797154</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746458797154</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"refactor: clean code by adding constraint message and api response\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747241907672</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747241907672</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"feat: add project\" />\r\n    <MESSAGE value=\"feat: config security, AuthenticationFiler, authentication, authorization\" />\r\n    <MESSAGE value=\"feat: done login and register system also UI done\" />\r\n    <MESSAGE value=\"feat: done UI for profile and edit profile\" />\r\n    <MESSAGE value=\"feat: done login, register, update profile\" />\r\n    <MESSAGE value=\"feat: done UI for search system\" />\r\n    <MESSAGE value=\"refactor: clean code by adding constraint message and api response\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"refactor: clean code by adding constraint message and api response\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cc140326d341a0c7d69c6e93e76261b3fac2a5bd)
++++ b/.idea/workspace.xml	(date 1747383506842)
+@@ -4,19 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="refactor: clean code by adding constraint message and api response">
+-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/BaseUrl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/repositories/UserRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/components/sidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.module.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css" afterDir="false" />
+-    </list>
++    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="refactor: clean code by adding constraint message and api response" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -34,7 +22,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main" />
++        <entry key="$PROJECT_DIR$" value="feature/follow-and-followers-system" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -73,35 +61,35 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,
+-    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
+-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+-    &quot;Spring Boot.PersonalBlogApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;feature/search-profile-system&quot;,
+-    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/boyzs/Desktop/Java/HIT_SPRING_BOOT/baitapquanlynhansu&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;sonarlint&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
++    "Notification.DoNotAsk-Database detector": "true",
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
++    "Spring Boot.PersonalBlogApplication.executor": "Run",
++    "git-widget-placeholder": "main",
++    "ignore.preview.features.used": "true",
++    "ignore.virus.scanning.warn.message": "true",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/Users/boyzs/Desktop/Java/HIT_SPRING_BOOT/baitapquanlynhansu",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "sonarlint",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+       <recent name="com.example.khuong18.configs" />
+@@ -239,6 +227,7 @@
+     <MESSAGE value="feat: done login, register, update profile" />
+     <MESSAGE value="feat: done UI for search system" />
+     <MESSAGE value="refactor: clean code by adding constraint message and api response" />
+-    <option name="LAST_COMMIT_MESSAGE" value="refactor: clean code by adding constraint message and api response" />
++    <MESSAGE value="feat: follow system" />
++    <option name="LAST_COMMIT_MESSAGE" value="feat: follow system" />
+   </component>
+ </project>
+\ No newline at end of file

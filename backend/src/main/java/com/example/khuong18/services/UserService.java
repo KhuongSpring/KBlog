@@ -11,8 +11,8 @@ public interface UserService {
     boolean createUser(CreationUserRequest request);
     UserResponse getUserById(Long id);
     UserResponse getUserByUsername(String username);
-    UserResponse updateProfileUserByUserName(UserUpdateProfileRequest request);
-    void updateAvatar(String url, String userName);
+    UserResponse updateProfileUserById(UserUpdateProfileRequest request);
+    void updateAvatar(String url, Long id);
     List<UserResponse> getUsersByKeyword(String keyword);
-    void updateFollow(String myUsername, String targetUsername);
+    void updateFollow(Long myId, Long targetId);
 }

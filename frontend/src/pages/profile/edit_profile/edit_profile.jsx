@@ -16,31 +16,33 @@ function Edit_Profile() {
 
     const token = localStorage.getItem("token");
 
-    const getUserNameByToken = async () => {
-        if (!token) {
-            console.error("Token not found!");
-            return;
-        }
-
-        const decode = jwtDecode(token);
-        const username = decode.sub;
-        return username;
+    const getIdByToken = async () => {
+        const decoded = jwtDecode(token);
+        return decoded.id;
     }
 
-    const fetchUserByUserName = async () => {
+    const fetchUserByToken = async () => {
+        setUserName('');
+        setFullName('');
+        setBio('');
+        setConnectLink('');
+        setGender('');
+        setUrl('');
+
         if (!token) {
             console.error("Token not found!");
             return;
         }
 
-        const username = await getUserNameByToken();
-        if (!username) {
-            console.error("Username not found in token!");
+        let idFromToken = await getIdByToken();
+
+        if (!idFromToken) {
+            console.error("Id not found in token!");
             return null;
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/user/${username}`, {
+            const response = await fetch(`http://localhost:8080/user/id/${idFromToken}`, {
                 method: 'GET',
                 headers: {
                     "Authorization": "Bearer " + token
@@ -66,11 +68,15 @@ function Edit_Profile() {
         }
     }
 
-    const updateInformation = async () => {
+    const updateInformation = async (e) => {
+        // e.preventDefault();
+
         if (!token) {
             console.error("Token not found!");
             return;
         }
+
+        const idFromToken = await getIdByToken();
 
         try {
             const response = await fetch('http://localhost:8080/user', {
@@ -79,7 +85,7 @@ function Edit_Profile() {
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + token
                 },
-                body: JSON.stringify({userName, bio, connectLink, gender})
+                body: JSON.stringify({id: idFromToken, bio, connectLink, gender})
             });
 
             if (!response.ok) {
@@ -87,9 +93,11 @@ function Edit_Profile() {
             }
             const userData = await response.json();
 
-            setBio(userData.bio || '');
-            setConnectLink(userData.connectLink || '');
-            setGender(userData.gender || '');
+            setBio(userData.bio || bio);
+            setConnectLink(userData.connectLink || connectLink);
+            setGender(userData.gender || gender);
+
+
 
             return userData;
         } catch (error) {
@@ -106,9 +114,11 @@ function Edit_Profile() {
             console.log("Loi");
             return;
         }
+        const id = await getIdByToken();
+
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("userName", userName);
+        formData.append("id", id);
 
         try{
             const res = await axios.post("http://localhost:8080/user/upload_avatar", formData, {
@@ -131,7 +141,7 @@ function Edit_Profile() {
     }
 
     useEffect(() => {
-        fetchUserByUserName();
+        fetchUserByToken();
     }, []);
 
     return (

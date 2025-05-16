@@ -12,8 +12,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FollowUserRequest {
 
-    @NotBlank(message = ErrorMessage.User.ERR_USERNAME_NOT_VALID)
-    String myUsername;
-    @NotBlank(message = ErrorMessage.User.ERR_USERNAME_NOT_VALID)
-    String targetUsername;
+    @NotBlank(message = ErrorMessage.User.ERR_ID_NOT_VALID)
+    Long myId;
+    @NotBlank(message = ErrorMessage.User.ERR_ID_NOT_VALID)
+    Long targetId;
 }

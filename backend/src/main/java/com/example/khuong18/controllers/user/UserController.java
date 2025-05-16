@@ -39,10 +39,14 @@ public class UserController {
                 .build());
     }
 
-//    @GetMapping("/{userId}")
-//    public ResponseEntity<UserResponse> getUserById(@PathVariable(name = "userId") Long id){
-//        return ResponseEntity.ok(userService.getUserById(id));
-//    }
+    @GetMapping(BaseUrl.User.GET_USER_BY_ID)
+    public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable(name = "id") Long id){
+        return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_GET_DATA)
+                .result(userService.getUserById(id))
+                .build());
+    }
 
     @GetMapping(BaseUrl.User.GET_USER_BY_USERNAME)
     public ResponseEntity<ApiResponse<UserResponse>> getUserByUserName(@PathVariable(name = "userName") String username) {
@@ -54,19 +58,19 @@ public class UserController {
     }
 
     @PutMapping(BaseUrl.User.UPDATE_USER)
-    public ResponseEntity<ApiResponse<UserResponse>> updateUserByUserName(@Valid @RequestBody UserUpdateProfileRequest request) {
+    public ResponseEntity<ApiResponse<UserResponse>> updateUserById(@Valid @RequestBody UserUpdateProfileRequest request) {
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(HttpStatus.OK.value())
                 .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
-                .result(userService.updateProfileUserByUserName(request))
+                .result(userService.updateProfileUserById(request))
                 .build());
     }
 
     @PostMapping(BaseUrl.User.UPLOAD_AVATAR)
-    public ResponseEntity<ApiResponse<String>> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam(name = "userName") String userName) throws IOException {
+    public ResponseEntity<ApiResponse<String>> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam(name = "id") Long id) throws IOException {
         Map<?, ?> result = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
         String imageUrl = (String) result.get("secure_url");
-        userService.updateAvatar(imageUrl, userName);
+        userService.updateAvatar(imageUrl, id);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(HttpStatus.OK.value())
                 .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
@@ -85,15 +89,15 @@ public class UserController {
 
     @PostMapping(BaseUrl.User.FOLLOW_USER)
     public ResponseEntity<ApiResponse<String>> followUser(@Valid @RequestBody FollowUserRequest request) {
-        String myUsername = request.getMyUsername();
-        String targetUsername = request.getTargetUsername();
+        Long myId = request.getMyId();
+        Long targetId = request.getTargetId();
 
-        userService.updateFollow(myUsername, targetUsername);
+        userService.updateFollow(myId, targetId);
 
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(HttpStatus.OK.value())
                 .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
-                .result(myUsername + " followed " + targetUsername)
+                .result(myId + " followed " + targetId)
                 .build());
     }
 
