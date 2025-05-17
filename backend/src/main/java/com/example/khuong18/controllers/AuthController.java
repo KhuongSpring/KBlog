@@ -29,18 +29,18 @@ public class AuthController {
     UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request){
+    public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request) {
         AuthResponse authResponse = authService.authentication(request);
         return ResponseEntity.ok(ApiResponse.<AuthResponse>builder()
-                        .result(authResponse)
-                        .message(SuccessMessage.Auth.SUCCESS_LOG_IN)
-                        .code(HttpStatus.OK.value())
+                .result(authResponse)
+                .message(SuccessMessage.Auth.SUCCESS_LOG_IN)
+                .code(HttpStatus.OK.value())
                 .build());
     }
 
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<String>> createUser(@Valid @RequestBody CreationUserRequest request) {
-        if (userService.createUser(request)){
+        if (userService.createUser(request)) {
             return ResponseEntity.ok(ApiResponse.<String>builder()
                     .result(SuccessMessage.Auth.SUCCESS_SIGN_UP)
                     .code(HttpStatus.CREATED.value())

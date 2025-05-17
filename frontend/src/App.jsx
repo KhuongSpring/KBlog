@@ -27,12 +27,12 @@ function App() {
         <BrowserRouter>
             {isLoggedIn ? (
                 <div className={styles.flex}>
-                    <Sidebar onLogout = {handleLogout} />
+                    <Sidebar onLogout={handleLogout}/>
                     <div className={styles.main_content}>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/profile" element={<Profile/>}/>
-                            <Route path="/profile/:idFromAnother" element={<Profile />} />
+                            <Route path="/profile/:idFromAnother" element={<Profile/>}/>
                             <Route path="/edit_profile" element={<Edit_Profile/>}/>
                         </Routes>
                     </div>

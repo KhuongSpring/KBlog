@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
         List<User> users = userRepository.findByUsernameContainingIgnoreCase(keyword);
 
         List<UserResponse> responses = new ArrayList<>();
-        for(User u : users){
+        for (User u : users) {
             responses.add(modelMapper.map(u, UserResponse.class));
         }
         return responses;
@@ -116,7 +116,21 @@ public class UserServiceImpl implements UserService {
             myUser.getFollowings().add(targetUser);
             myUser.setFollowing(myUser.getFollowing() + 1);
             targetUser.setFollower(targetUser.getFollower() + 1);
+        } else {
+            myUser.getFollowings().remove(targetUser);
+            myUser.setFollowing(Math.max(0, myUser.getFollowing() - 1));
+            targetUser.setFollower(Math.max(0, targetUser.getFollower() - 1));
         }
+    }
+
+    @Override
+    public boolean checkFollow(Long myId, Long targetId) {
+        User myUser = userRepository.findById(myId)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
+        User targetUser = userRepository.findById(targetId)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
+
+        return myUser.getFollowings().contains(targetUser);
     }
 
 }

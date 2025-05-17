@@ -58,7 +58,7 @@ function Register() {
                                placeholder="Username"
                                className={styles.username}
                                value={username}
-                               onChange={(e)=> setUsername(e.target.value)}
+                               onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div>
@@ -85,10 +85,11 @@ function Register() {
                                onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className={styles.policy}>By signing up, you agree to our Terms , Privacy Policy and Cookies Policy
+                    <div className={styles.policy}>By signing up, you agree to our Terms , Privacy Policy and Cookies
+                        Policy
                     </div>
                     <div>
-                        <button type="submit" className={styles.btn_register }>Sign up</button>
+                        <button type="submit" className={styles.btn_register}>Sign up</button>
                     </div>
                 </div>
                 <div className={styles.login}>

@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping(BaseUrl.User.GET_USER_BY_ID)
-    public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(HttpStatus.OK.value())
                 .message(SuccessMessage.User.SUCCESS_GET_DATA)
@@ -67,7 +67,10 @@ public class UserController {
     }
 
     @PostMapping(BaseUrl.User.UPLOAD_AVATAR)
-    public ResponseEntity<ApiResponse<String>> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam(name = "id") Long id) throws IOException {
+    public ResponseEntity<ApiResponse<String>> uploadImage(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam(name = "id") Long id
+    ) throws IOException {
         Map<?, ?> result = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
         String imageUrl = (String) result.get("secure_url");
         userService.updateAvatar(imageUrl, id);
@@ -100,5 +103,33 @@ public class UserController {
                 .result(myId + " followed " + targetId)
                 .build());
     }
+
+    @PostMapping(BaseUrl.User.UNFOLLOW_USER)
+    public ResponseEntity<ApiResponse<String>> unfollowUser(@Valid @RequestBody FollowUserRequest request) {
+        Long myId = request.getMyId();
+        Long targetId = request.getTargetId();
+
+        userService.updateFollow(myId, targetId);
+
+        return ResponseEntity.ok(ApiResponse.<String>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_UPDATE_DATA)
+                .result(myId + " unfollowed " + targetId)
+                .build());
+    }
+
+    @GetMapping(BaseUrl.User.CHECK_FOLLOW_USER)
+    public ResponseEntity<ApiResponse<Boolean>> checkFollowUser(
+            @RequestParam(name = "myId") Long myId,
+            @RequestParam(name = "targetId") Long targetId
+    ) {
+        boolean isFollowed = userService.checkFollow(myId, targetId);
+        return ResponseEntity.ok(ApiResponse.<Boolean>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_GET_DATA)
+                .result(isFollowed)
+                .build());
+    }
+
 
 }

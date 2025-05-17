@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
 
         User user = userRepository.findByUsername(request.getUsername());
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
-        boolean auth =  passwordEncoder.matches(request.getPassword(), user.getPassword());
+        boolean auth = passwordEncoder.matches(request.getPassword(), user.getPassword());
 
         if (!auth) throw new CustomException(ErrorMessage.Auth.ERR_LOGIN_FAIL, HttpStatus.BAD_REQUEST);
 

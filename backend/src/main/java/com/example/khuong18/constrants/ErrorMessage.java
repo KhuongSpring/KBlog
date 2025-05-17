@@ -1,7 +1,7 @@
 package com.example.khuong18.constrants;
 
 public class ErrorMessage {
-    public static class User{
+    public static class User {
         public static final String ERR_USERNAME_EXISTED = "Username existed!";
         public static final String ERR_EMAIL_EXISTED = "Email existed!";
         public static final String ERR_USER_NOT_FOUND = "User not found!";
@@ -13,7 +13,7 @@ public class ErrorMessage {
         public static final String ERR_BIO_NOT_VALID = "Bio not valid!";
     }
 
-    public static class Auth{
+    public static class Auth {
         public static final String ERR_LOGIN_FAIL = "Username or password wrong!";
     }
 
