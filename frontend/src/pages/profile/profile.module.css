@@ -150,11 +150,13 @@
 
 .follow_name .username{
     font-size: 16px;
+    font-weight: bold;
 }
 
 .follow_name .fullname {
     font-size: 14px;
     color: #A8A8A8;
+    margin-top: 3px;
 }
 
 .modal_content .list_user img {
