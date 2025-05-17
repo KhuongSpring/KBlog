@@ -9,6 +9,7 @@ import com.example.khuong18.entites.enums.Role;
 import com.example.khuong18.exceptions.CustomException;
 import com.example.khuong18.repositories.UserRepository;
 import com.example.khuong18.services.UserService;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -103,6 +104,7 @@ public class UserServiceImpl implements UserService {
         return responses;
     }
 
+    @Transactional
     @Override
     public void updateFollow(Long myId, Long targetId) {
         User myUser = userRepository.findById(myId)
@@ -110,13 +112,11 @@ public class UserServiceImpl implements UserService {
         User targetUser = userRepository.findById(targetId)
                 .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
 
-        myUser.getFollowings().add(targetUser);
-
-        myUser.setFollowing(myUser.getFollowing()+1);
-        targetUser.setFollower(targetUser.getFollower()+1);
-
-        userRepository.save(myUser);
-        userRepository.save(targetUser);
+        if (!myUser.getFollowings().contains(targetUser)) {
+            myUser.getFollowings().add(targetUser);
+            myUser.setFollowing(myUser.getFollowing() + 1);
+            targetUser.setFollower(targetUser.getFollower() + 1);
+        }
     }
 
 }

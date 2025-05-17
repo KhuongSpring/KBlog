@@ -29,7 +29,7 @@ function Register() {
 
             localStorage.setItem("token", data.token);
 
-            navigate("/")
+            navigate("/login")
 
         } catch (error) {
             console.error('SignUp error:', error.message);

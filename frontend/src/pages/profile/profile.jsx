@@ -18,7 +18,6 @@ function Profile() {
     const [post, setPost] = useState(0);
     const [url, setUrl] = useState("");
     const [isYourProfile, setIsYourProfile] = useState(true);
-    const [myId, setMyId] = useState(0);
     const [targetId, setTargetId] = useState(0);
     const {idFromAnother} = useParams();
 
@@ -84,8 +83,6 @@ function Profile() {
             setFollowing(result.following || 0);
             setPost(result.post || 0);
 
-            setMyId(idFromToken);
-
             return result;
         } catch (error) {
             console.error('Error fetching user info:', error);
@@ -94,6 +91,8 @@ function Profile() {
     }
 
     const handleFollow = async () => {
+        const idFromToken = await getIdByToken();
+
         try {
             const response = await fetch(`http://localhost:8080/user/follow`, {
                 method: 'POST',
@@ -102,7 +101,7 @@ function Profile() {
                     "Authorization": "Bearer " + token
                 },
                 body: JSON.stringify({
-                    myId: myId,
+                    myId: idFromToken,
                     targetId: targetId
                 })
             });

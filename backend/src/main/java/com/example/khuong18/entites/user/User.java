@@ -12,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 @Data
+@EqualsAndHashCode(exclude = {"followers", "followings"})
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @AllArgsConstructor

@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="refactor: clean code by adding constraint message and api response">
+    <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="refactor: change use username to use id system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/BaseUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/BaseUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/ErrorMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/user/FollowUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/user/FollowUserRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/user/UserUpdateProfileRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/requests/user/UserUpdateProfileRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/responses/user/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/responses/user/UserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/JwtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/entites/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/entites/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/edit_profile/edit_profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/edit_profile/edit_profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="refactor/change-system-get-user-by-username" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,35 +68,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
-    "Notification.DoNotAsk-Database detector": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "Spring Boot.PersonalBlogApplication.executor": "Run",
-    "git-widget-placeholder": "refactor/change-system-get-user-by-username",
-    "ignore.preview.features.used": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/boyzs/Desktop/Java/HIT_SPRING_BOOT/baitapquanlynhansu",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "sonarlint",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,
+    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.PersonalBlogApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/boyzs/Desktop/Java/HIT_SPRING_BOOT/baitapquanlynhansu&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;sonarlint&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.khuong18.configs" />
@@ -163,6 +155,7 @@
       <workItem from="1747280945562" duration="6759000" />
       <workItem from="1747292298266" duration="9000" />
       <workItem from="1747293503493" duration="5119000" />
+      <workItem from="1747451720356" duration="1304000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add project">
       <option name="closed" value="true" />
@@ -242,6 +235,7 @@
     <MESSAGE value="feat: done login, register, update profile" />
     <MESSAGE value="feat: done UI for search system" />
     <MESSAGE value="refactor: clean code by adding constraint message and api response" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: clean code by adding constraint message and api response" />
+    <MESSAGE value="refactor: change use username to use id system" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: change use username to use id system" />
   </component>
 </project>
