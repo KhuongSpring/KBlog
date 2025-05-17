@@ -12,5 +12,6 @@ public class BaseUrl {
         public static final String FOLLOW_USER = PREFIX + "/follow";
         public static final String UNFOLLOW_USER = PREFIX + "/unfollow";
         public static final String CHECK_FOLLOW_USER = PREFIX + "/follow/check-follow";
+        public static final String SHOW_FOLLOW_USER = PREFIX + "/follow/show-follow";
     }
 }

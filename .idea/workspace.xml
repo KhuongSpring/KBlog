@@ -7,24 +7,11 @@
     <list default="true" id="fb211101-3378-489b-b17a-0537c0ac67c9" name="Changes" comment="fix: update follow into database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/BaseUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/BaseUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/ErrorMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/SuccessMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/constrants/SuccessMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/controllers/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/responses/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/dtos/responses/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/exceptions/CustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/exceptions/CustomException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/security/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/AuthServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/khuong18/services/impls/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/registers/register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/home/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/edit_profile/edit_profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/edit_profile/edit_profile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/profile/profile.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +81,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.PersonalBlogApplication.executor": "Run",
-    "git-widget-placeholder": "feature/followed-and-unfollow-system",
+    "git-widget-placeholder": "feature/show-follower-and-following",
     "ignore.preview.features.used": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
