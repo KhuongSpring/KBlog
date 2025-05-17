@@ -4,7 +4,7 @@ package com.example.khuong18.exceptions;
 import org.springframework.http.HttpStatus;
 
 
-public class CustomException extends RuntimeException{
+public class CustomException extends RuntimeException {
     private final HttpStatus status;
 
     public CustomException(String message, HttpStatus status) {

@@ -19,6 +19,7 @@ function Profile() {
     const [url, setUrl] = useState("");
     const [isYourProfile, setIsYourProfile] = useState(true);
     const [targetId, setTargetId] = useState(0);
+    const [isFollowing, setIsFollowing] = useState(false);
     const {idFromAnother} = useParams();
 
     const moveToEditProfile = async () => {
@@ -61,17 +62,15 @@ function Profile() {
 
         try {
             const response = await fetch(`http://localhost:8080/user/id/${idFromToken}`, {
-                method: 'GET',
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
+                method: 'GET', headers: {
+                    "Authorization": `Bearer ${token}`, "Content-Type": "application/json"
                 }
             });
 
             if (!response.ok) {
                 throw new Error('Failed to fetch user info');
             }
-            const { result } = await response.json();
+            const {result} = await response.json();
 
             setUserName(result.username || '');
             setFullName(result.fullName || '');
@@ -95,14 +94,10 @@ function Profile() {
 
         try {
             const response = await fetch(`http://localhost:8080/user/follow`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": "Bearer " + token
-                },
-                body: JSON.stringify({
-                    myId: idFromToken,
-                    targetId: targetId
+                method: 'POST', headers: {
+                    'Content-Type': 'application/json', "Authorization": "Bearer " + token
+                }, body: JSON.stringify({
+                    myId: idFromToken, targetId: targetId
                 })
             });
 
@@ -110,7 +105,55 @@ function Profile() {
                 throw new Error('Failed to follow');
             }
             const data = await response.json();
+            setIsFollowing(true);
+            setFollower(prev => prev + 1)
             return data;
+        } catch (error) {
+            console.error('Error fetching user info:', error);
+            return null;
+        }
+    }
+
+    const handleUnFollow = async () => {
+        const idFromToken = await getIdByToken();
+
+        try {
+            const response = await fetch(`http://localhost:8080/user/unfollow`, {
+                method: 'POST', headers: {
+                    'Content-Type': 'application/json', "Authorization": "Bearer " + token
+                }, body: JSON.stringify({
+                    myId: idFromToken, targetId: targetId
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to follow');
+            }
+            const data = await response.json();
+            setIsFollowing(false);
+            setFollower(prev => prev - 1)
+            return data;
+        } catch (error) {
+            console.error('Error fetching user info:', error);
+            return null;
+        }
+    }
+
+    const checkFollowing = async () => {
+        const idFromToken = await getIdByToken();
+
+        try {
+            const response = await fetch(`http://localhost:8080/user/follow/check-follow?myId=${idFromToken}&targetId=${targetId}`, {
+                method: 'GET', headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to check follow');
+            }
+            const isFollowing = await response.json();
+            setIsFollowing(isFollowing.result);
         } catch (error) {
             console.error('Error fetching user info:', error);
             return null;
@@ -121,48 +164,55 @@ function Profile() {
         if (idFromAnother) {
             setTargetId(idFromAnother);
             setIsYourProfile(false);
+            setIsFollowing(false);
         } else {
             setIsYourProfile(true);
         }
         fetchUserById();
     }, [idFromAnother]);
 
-    return (
-        <div className={styles.profile_body}>
-            <div className={styles.header}>
-                <div className={styles.header_content}>
-                    <div className={styles.avata}><img src={url || "/profile/logo.png"} alt=""/></div>
-                    <div className={styles.information}>
-                        <div className={styles.name_profile_edit}>
-                            <p> {userName} </p>
-                            {isYourProfile
-                                ? <button className={styles.edit} onClick={moveToEditProfile}>Edit profile</button>
-                                : <button className={styles.follow_btn} onClick={handleFollow}>Follow</button>}
-                            <img src="/profile/setting.png" alt=""/>
-                        </div>
-                        <div className={styles.follow}>
-                            <p className={styles.post}>
-                                <strong style={{ fontSize: '1.1rem' }}>{post}</strong> posts
-                            </p>
-                            <p className={styles.followers}>
-                                <strong style={{ fontSize: '1.1rem' }}>{follower}</strong> followers
-                            </p>
-                            <p className={styles.following}>
-                                <strong style={{ fontSize: '1.1rem' }}>{following}</strong> following
-                            </p>
-                        </div>
-                        <p className={styles.profile_name}>{fullName}</p>
-                        <p className={styles.description}>{bio}</p>
-                        <p className={styles.link_connect}><a href={connectLink} target="_blank"
-                                                              rel="noopener noreferrer">{connectLink}</a></p>
+    useEffect(() => {
+        if (!isYourProfile && targetId) {
+            checkFollowing();
+        }
+    }, [targetId]);
+
+
+    return (<div className={styles.profile_body}>
+        <div className={styles.header}>
+            <div className={styles.header_content}>
+                <div className={styles.avata}><img src={url || "/profile/logo.png"} alt=""/></div>
+                <div className={styles.information}>
+                    <div className={styles.name_profile_edit}>
+                        <p> {userName} </p>
+                        {isYourProfile ? <button className={styles.edit} onClick={moveToEditProfile}>Edit
+                            profile</button> : (isFollowing) ?
+                            <button className={styles.edit} onClick={handleUnFollow}>Unfollow</button> :
+                            <button className={styles.follow_btn} onClick={handleFollow}>Follow</button>}
+                        <img src="/profile/setting.png" alt=""/>
                     </div>
+                    <div className={styles.follow}>
+                        <p className={styles.post}>
+                            <strong style={{fontSize: '1.1rem'}}>{post}</strong> posts
+                        </p>
+                        <p className={styles.followers}>
+                            <strong style={{fontSize: '1.1rem'}}>{follower}</strong> followers
+                        </p>
+                        <p className={styles.following}>
+                            <strong style={{fontSize: '1.1rem'}}>{following}</strong> following
+                        </p>
+                    </div>
+                    <p className={styles.profile_name}>{fullName}</p>
+                    <p className={styles.description}>{bio}</p>
+                    <p className={styles.link_connect}><a href={connectLink} target="_blank"
+                                                          rel="noopener noreferrer">{connectLink}</a></p>
                 </div>
             </div>
-            <div className={styles.story_mark}></div>
-            <div className={styles.type_post}></div>
-            <div className={styles.post}></div>
         </div>
-    );
+        <div className={styles.story_mark}></div>
+        <div className={styles.type_post}></div>
+        <div className={styles.post}></div>
+    </div>);
 }
 
 export default Profile;

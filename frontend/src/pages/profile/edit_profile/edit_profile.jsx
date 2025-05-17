@@ -98,7 +98,6 @@ function Edit_Profile() {
             setGender(userData.gender || gender);
 
 
-
             return userData;
         } catch (error) {
             console.error('Error fetching user info:', error);
@@ -110,7 +109,7 @@ function Edit_Profile() {
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
 
-        if (!file || file.length === 0){
+        if (!file || file.length === 0) {
             console.log("Loi");
             return;
         }
@@ -120,7 +119,7 @@ function Edit_Profile() {
         formData.append("file", file);
         formData.append("id", id);
 
-        try{
+        try {
             const res = await axios.post("http://localhost:8080/user/upload_avatar", formData, {
                 headers: {
                     "Authorization": "Bearer " + token,
@@ -129,14 +128,14 @@ function Edit_Profile() {
             });
 
             setUrl(res.data.url || res.data);
-        } catch (error){
+        } catch (error) {
             console.log("Upload fail: ", error)
         }
 
     };
 
 
-    const moveBack= async () =>{
+    const moveBack = async () => {
         navigate('/profile');
     }
 
@@ -158,7 +157,7 @@ function Edit_Profile() {
                             </div>
                         </div>
                         <div className={styles.infor_right}>
-                            <label style={{ display: 'inline-block', position: 'relative', overflow: 'hidden' }}>
+                            <label style={{display: 'inline-block', position: 'relative', overflow: 'hidden'}}>
                                 <button type="button">Chọn ảnh</button>
                                 <input
                                     type="file"
