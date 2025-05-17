@@ -24,4 +24,6 @@ public interface UserService {
     void updateFollow(Long myId, Long targetId);
 
     boolean checkFollow(Long myId, Long targetId);
+
+    List<UserResponse> showFollow(Long id, boolean isFollower);
 }

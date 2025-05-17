@@ -17,9 +17,14 @@ function Profile() {
     const [following, setFollowing] = useState(0);
     const [post, setPost] = useState(0);
     const [url, setUrl] = useState("");
+
     const [isYourProfile, setIsYourProfile] = useState(true);
     const [targetId, setTargetId] = useState(0);
     const [isFollowing, setIsFollowing] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [followList, setFollowList] = useState([]);
+    const [modalTitle, setModalTitle] = useState('');
+
     const {idFromAnother} = useParams();
 
     const moveToEditProfile = async () => {
@@ -160,6 +165,30 @@ function Profile() {
         }
     }
 
+    const openFollowList = async (isFollower) => {
+        const id = await getIdByToken();
+        const userId = idFromAnother || id;
+
+        try {
+            const response = await fetch(`http://localhost:8080/user/follow/show-follow?id=${userId}&isFollower=${isFollower}`, {
+                method: 'GET', headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch follow list');
+            }
+
+            const list = await response.json();
+            setFollowList(list.result);
+            setModalTitle(isFollower ? "Followers" : "Followings");
+            setShowModal(true);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     useEffect(() => {
         if (idFromAnother) {
             setTargetId(idFromAnother);
@@ -185,21 +214,35 @@ function Profile() {
                 <div className={styles.information}>
                     <div className={styles.name_profile_edit}>
                         <p> {userName} </p>
-                        {isYourProfile ? <button className={styles.edit} onClick={moveToEditProfile}>Edit
-                            profile</button> : (isFollowing) ?
-                            <button className={styles.edit} onClick={handleUnFollow}>Unfollow</button> :
-                            <button className={styles.follow_btn} onClick={handleFollow}>Follow</button>}
+                        {isYourProfile ?
+                            <button
+                                className={styles.edit}
+                                onClick={moveToEditProfile}
+                                style={{cursor: 'pointer'}}> Edit profile </button>
+                            : (isFollowing) ?
+                                <button
+                                    className={styles.edit}
+                                    onClick={handleUnFollow}
+                                    style={{cursor: 'pointer'}}> Unfollow </button>
+                                : <button
+                                    className={styles.follow_btn}
+                                    onClick={handleFollow}
+                                    style={{cursor: 'pointer'}}> Follow </button>}
                         <img src="/profile/setting.png" alt=""/>
                     </div>
                     <div className={styles.follow}>
                         <p className={styles.post}>
                             <strong style={{fontSize: '1.1rem'}}>{post}</strong> posts
                         </p>
-                        <p className={styles.followers}>
+                        <p className={styles.followers}
+                           onClick={() => openFollowList(true)}
+                           style={{cursor: 'pointer'}}>
                             <strong style={{fontSize: '1.1rem'}}>{follower}</strong> followers
                         </p>
-                        <p className={styles.following}>
-                            <strong style={{fontSize: '1.1rem'}}>{following}</strong> following
+                        <p className={styles.following}
+                           onClick={() => openFollowList(false)}
+                           style={{cursor: 'pointer'}}>
+                            <strong style={{fontSize: '1.1rem'}}>{following}</strong> followings
                         </p>
                     </div>
                     <p className={styles.profile_name}>{fullName}</p>
@@ -212,6 +255,23 @@ function Profile() {
         <div className={styles.story_mark}></div>
         <div className={styles.type_post}></div>
         <div className={styles.post}></div>
+
+        {showModal && (<div className={styles.modal_overlay}>
+            <div className={styles.modal_content}>
+                <h3>{modalTitle}</h3>
+                <hr/>
+                <button onClick={() => setShowModal(false)}>Close</button>
+                <ul className={styles.list_user}>
+                    {followList.map((user, index) => (<li key={index}>
+                        <img src={user.avatar || "/profile/logo.png"} alt="" width={30} height={30}/>
+                        <div className={styles.follow_name}>
+                            <p className={styles.username}>{user.username}</p>
+                            <p className={styles.fullname}>{user.fullName}</p>
+                        </div>
+                    </li>))}
+                </ul>
+            </div>
+        </div>)}
     </div>);
 }
 

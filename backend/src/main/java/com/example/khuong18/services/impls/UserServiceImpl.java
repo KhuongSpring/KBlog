@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -133,4 +135,16 @@ public class UserServiceImpl implements UserService {
         return myUser.getFollowings().contains(targetUser);
     }
 
+    @Override
+    public List<UserResponse> showFollow(Long id, boolean isFollower) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorMessage.User.ERR_USER_NOT_FOUND, HttpStatus.BAD_REQUEST));
+        Set<User> response = isFollower ? user.getFollowers() : user.getFollowings();
+
+        List<UserResponse> users = new ArrayList<>();
+        for (User u : response) {
+            users.add(modelMapper.map(u, UserResponse.class));
+        }
+        return users;
+    }
 }

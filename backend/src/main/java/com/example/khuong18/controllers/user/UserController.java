@@ -131,5 +131,16 @@ public class UserController {
                 .build());
     }
 
+    @GetMapping(BaseUrl.User.SHOW_FOLLOW_USER)
+    public ResponseEntity<ApiResponse<List<UserResponse>>> showFollow(
+            @RequestParam(name = "id") Long id,
+            @RequestParam(name = "isFollower") boolean isFollower
+    ) {
+        return ResponseEntity.ok(ApiResponse.<List<UserResponse>>builder()
+                .code(HttpStatus.OK.value())
+                .message(SuccessMessage.User.SUCCESS_GET_DATA)
+                .result(userService.showFollow(id, isFollower))
+                .build());
+    }
 
 }
