@@ -14,4 +14,9 @@ public class BaseUrl {
         public static final String CHECK_FOLLOW_USER = PREFIX + "/follow/check-follow";
         public static final String SHOW_FOLLOW_USER = PREFIX + "/follow/show-follow";
     }
+
+    public static class Post {
+        public static final String PREFIX = "/post";
+        public static final String GET_POSTS = PREFIX;
+    }
 }

@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CreationUserRequest {
+public class UserCreationRequest {
     @Email(message = ErrorMessage.User.ERR_EMAIL_NOT_VALID)
     String email;
 

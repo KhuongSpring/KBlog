@@ -16,7 +16,7 @@ function Home() {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/user', {
+            const response = await fetch('http://localhost:8080/post', {
                 method: 'GET',
                 headers: {
                     "Authorization": "Bearer " + token

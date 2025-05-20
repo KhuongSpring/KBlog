@@ -17,4 +17,10 @@ public class ErrorMessage {
         public static final String ERR_LOGIN_FAIL = "Username or password wrong!";
     }
 
+    public static class Post {
+        public static final String ERR_CONTENT_EMPTY = "Content must not empty!";
+        public static final String ERR_TYPE_NOT_VALID = "Post type not valid!";
+        public static final String ERR_CREATE_TIME_NOT_VALID = "Create time not valid!";
+        public static final String ERR_OWNER_ID_NOT_VALID = "Owner id not valid!";
+    }
 }

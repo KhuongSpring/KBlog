@@ -2,7 +2,7 @@ package com.example.khuong18.controllers;
 
 
 import com.example.khuong18.constrants.SuccessMessage;
-import com.example.khuong18.dtos.requests.user.CreationUserRequest;
+import com.example.khuong18.dtos.requests.user.UserCreationRequest;
 import com.example.khuong18.dtos.requests.LoginRequest;
 import com.example.khuong18.dtos.responses.ApiResponse;
 import com.example.khuong18.dtos.responses.AuthResponse;
@@ -39,7 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<String>> createUser(@Valid @RequestBody CreationUserRequest request) {
+    public ResponseEntity<ApiResponse<String>> createUser(@Valid @RequestBody UserCreationRequest request) {
         if (userService.createUser(request)) {
             return ResponseEntity.ok(ApiResponse.<String>builder()
                     .result(SuccessMessage.Auth.SUCCESS_SIGN_UP)

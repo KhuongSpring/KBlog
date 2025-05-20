@@ -1,11 +1,10 @@
 package com.example.khuong18.controllers.user;
 
-import com.cloudinary.Api;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.khuong18.constrants.BaseUrl;
 import com.example.khuong18.constrants.SuccessMessage;
-import com.example.khuong18.dtos.requests.user.FollowUserRequest;
+import com.example.khuong18.dtos.requests.user.UserFollowRequest;
 import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.ApiResponse;
 import com.example.khuong18.dtos.responses.user.UserResponse;
@@ -91,7 +90,7 @@ public class UserController {
     }
 
     @PostMapping(BaseUrl.User.FOLLOW_USER)
-    public ResponseEntity<ApiResponse<String>> followUser(@Valid @RequestBody FollowUserRequest request) {
+    public ResponseEntity<ApiResponse<String>> followUser(@Valid @RequestBody UserFollowRequest request) {
         Long myId = request.getMyId();
         Long targetId = request.getTargetId();
 
@@ -105,7 +104,7 @@ public class UserController {
     }
 
     @PostMapping(BaseUrl.User.UNFOLLOW_USER)
-    public ResponseEntity<ApiResponse<String>> unfollowUser(@Valid @RequestBody FollowUserRequest request) {
+    public ResponseEntity<ApiResponse<String>> unfollowUser(@Valid @RequestBody UserFollowRequest request) {
         Long myId = request.getMyId();
         Long targetId = request.getTargetId();
 

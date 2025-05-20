@@ -29,7 +29,7 @@ public class SecurityConfig {
     };
 
     String[] ADMIN_END_POINT = {
-            "/user/**"
+            "/admin/**"
     };
 
     JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -47,8 +47,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests(request ->
                 request
                         .requestMatchers(PUBLIC_END_POINT).permitAll()
-                        .requestMatchers(USER_END_POINT).permitAll()
-                        .requestMatchers(ADMIN_END_POINT).permitAll()
+                        .requestMatchers(USER_END_POINT).hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(ADMIN_END_POINT).hasRole("ADMIN")
                         .anyRequest().authenticated()
         );
 

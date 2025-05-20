@@ -1,7 +1,7 @@
 package com.example.khuong18.services.impls;
 
 import com.example.khuong18.constrants.ErrorMessage;
-import com.example.khuong18.dtos.requests.user.CreationUserRequest;
+import com.example.khuong18.dtos.requests.user.UserCreationRequest;
 import com.example.khuong18.dtos.requests.user.UserUpdateProfileRequest;
 import com.example.khuong18.dtos.responses.user.UserResponse;
 import com.example.khuong18.entites.user.User;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -42,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean createUser(CreationUserRequest request) {
+    public boolean createUser(UserCreationRequest request) {
         if (userRepository.existsUserByUsername(request.getUsername()))
             throw new CustomException(ErrorMessage.User.ERR_USERNAME_EXISTED, HttpStatus.CONFLICT);
         if (userRepository.existsUserByEmail(request.getEmail()))
